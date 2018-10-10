@@ -1,0 +1,8 @@
+WebApp/CustomerPricing/.vs/
+WebApp/CustomerPricing/CustomerPricing.Server/bin/
+WebApp/CustomerPricing/CustomerPricing.Server/obj/Debug/
+WebApp/CustomerPricing/packages/
+WebApp/CustomerPricing/CustomerPricing.Server.Tests/obj/
+WebApp/CustomerPricing/CustomerPricing.Server.Tests/bin/
+WebApp/CustomerPricing/CustomerPricing.Server/App_Data/CustomerPricingDb.mdf
+WebApp/CustomerPricing/CustomerPricing.Server/App_Data/CustomerPricingDb_log.ldf

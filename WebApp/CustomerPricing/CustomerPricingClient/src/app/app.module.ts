@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NotifierModule } from 'angular-notifier';
+import { NgBusyModule } from 'ng-busy';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,11 +26,12 @@ import { UrlService } from './services/url.service';
     SigninComponent    
   ],
   imports: [
-    BrowserModule, HttpModule, HttpClientModule, FormsModule, BrowserAnimationsModule, NotifierModule, AppRoutingModule
+    BrowserModule, HttpModule, HttpClientModule, FormsModule, BrowserAnimationsModule, NotifierModule, AppRoutingModule, NgBusyModule
   ],
   providers: [UrlService],
   bootstrap: [AppComponent]
 })
+
 export class AppModule {
   
 }

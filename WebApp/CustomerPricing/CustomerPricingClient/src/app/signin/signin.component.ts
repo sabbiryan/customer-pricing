@@ -3,7 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { AuthenticationService} from "../services/authentication.service";
 import { Router, ActivatedRoute } from '@angular/router';
 //import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { first } from 'rxjs/operators';
+import { first } from "rxjs/operators";
+import { Subscription } from "rxjs";
 
 import { SignIn } from "./_models/signIn";
 
@@ -15,6 +16,7 @@ import {EventService} from "../services/events/event.service";
   styleUrls: ['./signin.component.css']
 })
 export class SigninComponent implements OnInit {
+  busy: Subscription;
 
   //loginForm: FormGroup;
   loading = false;
@@ -50,7 +52,7 @@ export class SigninComponent implements OnInit {
 
   signin(isValid: boolean) {    
     this.loading = true;
-    this.authenticationService.login(this.model.UserName, this.model.Password)
+    this.busy =  this.authenticationService.login(this.model.UserName, this.model.Password)
       .pipe(first())
       .subscribe(
         data => {

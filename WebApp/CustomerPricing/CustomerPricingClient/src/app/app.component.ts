@@ -15,7 +15,7 @@ import { EventService } from "./services/events/event.service";
 
 
 export class AppComponent {
-  title = 'Party Pricing';
+  title = "Party Pricing";
 
   isSignedIn: boolean = false;
 

@@ -7,15 +7,18 @@ import { catchError, map, tap } from 'rxjs/operators';
 
 import {Department} from "../models/department";
 
+import {UrlService} from "../services/url.service";
+
+
 @Injectable({ providedIn: "root" })
 
 export class DepartmentService {
 
   private deparmtentApi: string;
 
-  constructor(private http: Http) {
+  constructor(private http: Http, private url :UrlService) {
 
-    this.deparmtentApi = "http://localhost:55700/api/Department";
+    this.deparmtentApi = this.url.productApi;
   }
 
   deleteDepartment(id: string): Observable<any> {

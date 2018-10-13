@@ -5,7 +5,9 @@ import { Http, Response } from "@angular/http";
 import { Observable, of, from } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
-import {Employee} from "../models/employee";
+import { Employee } from "../models/employee";
+
+import { UrlService } from "../services/url.service";
 
 @Injectable({ providedIn: "root" })
 
@@ -13,9 +15,9 @@ export class EmployeeService {
 
   private employeeApi: string;
 
-  constructor(private http: Http) {
+  constructor(private http: Http, private url: UrlService) {
 
-    this.employeeApi = "http://localhost:55700/api/Employee";
+    this.employeeApi = this.url.partyApi;
   }
 
   deleteEmployee(id: string): Observable<any> {

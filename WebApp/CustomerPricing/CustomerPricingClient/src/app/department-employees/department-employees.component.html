@@ -1,0 +1,70 @@
+<div class="row">
+
+
+  <div *ngIf="isCreateMode || isUpdateMode">
+    <h3 *ngIf="isCreateMode">Add employee to {{department.DepartmentName}}</h3>
+    <h3 *ngIf="isUpdateMode">Update employee({{model.Name}}) of {{department.DepartmentName}}</h3>
+    <div class="row">
+      <form #employeeForm="ngForm" (submit)="createEmployee(employeeForm.valid)">
+        <div class="col-sm-3">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="name" [(ngModel)]="model.Name" name="Name" required />
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="form-group">
+            <select class="form-control" [(ngModel)]="model.Gender" name="Gender" required>
+              <option *ngFor="let gender of genders" [ngValue]="gender">{{gender}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="salary" [(ngModel)]="model.Salary" name="Salary" required />
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <button type="submit" class="btn btn-primary" *ngIf="!isUpdateMode">ADD</button>
+          <button type="submit" class="btn btn-info" *ngIf="isUpdateMode">UPDATE</button>
+          &nbsp;
+          <button type="button" class="btn btn-default" *ngIf="isUpdateMode" (click)="cancel()">CANCEL</button>
+        </div>
+      </form>
+    </div>
+
+  </div>
+
+  <br />
+  <h3>Department Info:</h3>
+  Department Name: {{department.DepartmentName}} <br />
+  Location: {{department.Location}} <br />
+  Department Head: {{department.DepartmentHead}} <br />
+
+  <h3>Employees of {{department.DepartmentName}}: (<a (click)="addEmployee()" style="cursor: pointer">Create New</a>)</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <td>Action</td>
+        <td>Name</td>
+        <td>Gender</td>
+        <td>Salary</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let l of department.Employees">
+        <td>
+          <button type="button" class="btn btn-info glyphicon glyphicon-edit" title="Edit" (click)="getEmployee(l.Id)"></button>
+          &nbsp;
+          &nbsp;
+          <button type="button" class="btn btn-danger glyphicon glyphicon-remove" title="Delete" (click)="deleteEmployee(l.Id)"></button>
+        </td>
+        <td>{{l.Name}}</td>
+        <td>{{l.GenderName}}</td>
+        <td>{{l.Salary}}</td>
+      </tr>
+      <tr [hidden]="department.Employees != null && department.Employees.length > 0">
+        <td colspan="5" class="text-center">No data found</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

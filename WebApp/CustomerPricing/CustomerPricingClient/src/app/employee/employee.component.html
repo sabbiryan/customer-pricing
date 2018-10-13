@@ -1,0 +1,74 @@
+<div class="row">
+
+  <h3>Add Employee</h3>
+  <div class="row">
+    <form #employeeForm="ngForm" (submit)="createEmployee(employeeForm.valid)">
+      <div class="col-sm-3">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="name" [(ngModel)]="model.Name" name="Name" required />
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="form-group">
+          <select class="form-control" [(ngModel)]="model.Gender" name="Gender" required>
+            <option *ngFor="let gender of genders" [ngValue]="gender">{{gender}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="salary" [(ngModel)]="model.Salary" name="Salary" required />
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="form-group">
+          <select class="form-control" [(ngModel)]="model.DepartmentId" name="DepartmentId" required>
+            <option *ngFor="let department of departments" [ngValue]="department.Id">{{department.DepartmentName}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <div class="pull-right">
+          <button type="submit" class="btn btn-primary" *ngIf="!isUpdateMode">ADD</button>
+          <button type="submit" class="btn btn-info" *ngIf="isUpdateMode">UPDATE</button>
+          &nbsp;
+          <button type="button" class="btn btn-default" *ngIf="isUpdateMode" (click)="cancel()">CANCEL</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <br />
+  <h3>Employees: </h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <td>Action</td>
+        <td>Name</td>
+        <td>Gender</td>
+        <td>Salary</td>
+        <td>Department</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let l of list">
+        <td>
+          <button type="button" class="btn btn-info glyphicon glyphicon-edit" title="Edit" (click)="getEmployee(l.Id)"></button>
+          &nbsp;
+          &nbsp;
+          <button type="button" class="btn btn-danger glyphicon glyphicon-remove" title="Delete" (click)="deleteEmployee(l.Id)"></button>
+        </td>
+        <td>{{l.Name}}</td>
+        <td>{{l.GenderName}}</td>
+        <td>{{l.Salary}}</td>
+        <td>{{l.Department.DepartmentName}}</td>
+      </tr>
+      <!--<tr [hidden]="departments == null">
+        <td colspan="5" class="text-center">Loading</td>
+      </tr>-->
+      <tr [hidden]="departments != null && departments.length > 0">
+        <td colspan="5" class="text-center">No data found</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

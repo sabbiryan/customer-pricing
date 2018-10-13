@@ -1,0 +1,67 @@
+
+
+<div class="row">
+
+  <h3>Add Department</h3>
+  <div class="row">
+    <form #departmentForm="ngForm" (submit)="createDepartment(departmentForm.valid)">
+      <div class="col-sm-3">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="department name" [(ngModel)]="model.DepartmentName" name="DepartmentName" required />
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="location name" [(ngModel)]="model.Location" name="Location" required />
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="department head" [(ngModel)]="model.DepartmentHead" name="DepartmentHead" required />
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <button type="submit" class="btn btn-primary" *ngIf="!isUpdateMode">ADD</button>
+        <button type="submit" class="btn btn-info" *ngIf="isUpdateMode">UPDATE</button>
+        &nbsp;
+        <button type="button" class="btn btn-default" *ngIf="isUpdateMode" (click)="cancel()">CANCEL</button>
+      </div>
+    </form>
+  </div>
+
+  <br />
+  <h3>Departments: </h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <td>Action</td>
+        <td>Department</td>
+        <td>Location</td>
+        <td>Department Head</td>
+        <td>Employee Count</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let department of departments">
+        <td>
+          <button type="button" class="btn btn-info glyphicon glyphicon-edit" title="Edit" (click)="getDepartment(department.Id)"></button>
+          &nbsp;
+          &nbsp;
+          <button type="button" class="btn btn-danger glyphicon glyphicon-remove" title="Delete" (click)="deleteDepartment(department.Id)"></button>
+        </td>
+        <td>{{department.DepartmentName}}</td>
+        <td>{{department.Location}}</td>
+        <td>{{department.DepartmentHead}}</td>
+        <td>
+          {{department.EmployeeCount}} (<a routerLink="/department/{{department.Id}}" routerLinkActive="active">view employees</a>)
+        </td>
+      </tr>
+      <!--<tr [hidden]="departments == null">
+        <td colspan="5" class="text-center">Loading</td>
+      </tr>-->
+      <tr [hidden]="departments != null && departments.length > 0">
+        <td colspan="5" class="text-center">No data found</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

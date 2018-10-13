@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using CustomerPricing.Server.Migrations.Seed;
+using CustomerPricing.Server.Models;
 using Microsoft.Owin;
 using Owin;
 
@@ -13,6 +15,8 @@ namespace CustomerPricing.Server
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
+
+            SecurityBuilder.Run(new ApplicationDbContext());
         }
     }
 }

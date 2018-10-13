@@ -254,6 +254,9 @@
       <DependentUpon>201810101836037_BusinessModels_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Migrations\Seed\SecurityBuilder.cs" />
+    <Compile Include="Migrations\Seed\StaticRole.cs" />
+    <Compile Include="Migrations\Seed\StaticUser.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\BusinessModels\EntityBase.cs" />
     <Compile Include="Models\BusinessModels\Party.cs" />

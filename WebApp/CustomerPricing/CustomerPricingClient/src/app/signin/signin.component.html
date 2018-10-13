@@ -1,0 +1,17 @@
+<div class="row">
+  <form #signinForm="ngForm" (submit)="signin(signinForm.valid)">
+    <div class="col-sm-offset-3 col-sm-6">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Username" [(ngModel)]="model.UserName" name="UserName" required />
+      </div>
+    </div>
+    <div class="col-sm-offset-3 col-sm-6">
+      <div class="form-group">
+        <input type="password" class="form-control" placeholder="Password" [(ngModel)]="model.Password" name="Password" required />
+      </div>
+    </div>
+    <div class="col-sm-offset-3 col-sm-6">
+      <button type="submit" class="btn btn-primary">Sign In</button>
+    </div>
+  </form>
+</div>

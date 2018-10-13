@@ -1,0 +1,40 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="">Party Pricing</a>
+    </div>
+    <ul class="nav navbar-nav" *ngIf="isSignedIn">
+      <li>
+        <a routerLink="" routerLinkActive="active">Dashboard</a>
+      </li>
+      <li>
+        <a routerLink="/party" routerLinkActive="active">Party</a>
+      </li>
+      <li>
+        <a routerLink="/product" routerLinkActive="active">Product</a>
+      </li>
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right">
+      <li *ngIf="!isSignedIn">
+        <a routerLink="/signin" routerLinkActive="active">Sign in</a>
+      </li>
+      <li *ngIf="isSignedIn">
+        <a style="cursor: pointer" (click)="signout()">Sign out</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="text-uppercase text-center" *ngIf="isSignedIn">
+  <h2>
+    Welcome to {{ title }}!
+  </h2>  
+</div>
+
+<router-outlet #routerOutlet="outlet" (activate)="changeOfRoutes()"></router-outlet>
+
+
+<notifier-container></notifier-container>
+
+

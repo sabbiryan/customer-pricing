@@ -1,14 +1,10 @@
+import {Party } from "../party/party.model";
+import { Product } from "../product/product.model";
+
 export class PartyPricing {
   Id: string;
-  Name: string;
-  Phone: string;
-  Email: string;
-  Address: string;  
-  Imo: string;  
-  Facebook: string;  
-  Whatsapp: string;  
-  ShopOwnerName: string;  
-  ShopOwnerPhone: string;  
-  ContactPersonName: string;  
-  ContactPersonPhone: string;  
+  PartyId: string;
+  Party: Party;
+  ProductId: string;
+  Product:Product;
 }

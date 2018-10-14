@@ -19,32 +19,31 @@ import { PartyPricingService } from "./party-pricing.service";
 })
 export class PartyPricingComponent implements OnInit {
 
-
-  department: Party;
+  list: PartyPricing[];
   model: PartyPricing;
   isCreateMode: boolean;
   isUpdateMode: boolean;
-  genders: string[];
 
   constructor(private partyPricingService: PartyPricingService,
     private notifierService: NotifierService,
     private route: ActivatedRoute) {
 
-    this.department = new Party();
     this.model = new PartyPricing();    
     this.isCreateMode = false;
     this.isUpdateMode = false;
-    this.isCreateMode = false;
   }
 
   ngOnInit() {
     //this.getDepartment(this.route.snapshot.params["id"]);
+    this.getPartyPricings();
   }
 
-  addEmployee() {
-    this.cancel();
-    //this.model.DepartmentId = this.department.Id;
+
+
+  enableCreateMode() {
+    this.model = new PartyPricing();
     this.isCreateMode = true;
+    this.isUpdateMode = false;
   }
 
 
@@ -62,8 +61,19 @@ export class PartyPricingComponent implements OnInit {
   //    });
   //}
 
+  getPartyPricings() {
+    this.partyPricingService.getAllDepartments().subscribe(data => {
+        this.list = data;
+        this.isUpdateMode = false;
+        this.isCreateMode = false;
+      },
+      error => {
+        this.notifierService.notify("error", "Failed To Load Data!");
+      });
+  }
 
-  getEmployee(id) {
+
+  getPartyPricing(id) {
     this.partyPricingService.getDepartment(id).subscribe(data => {
         this.model = data;        
         this.isUpdateMode = true;
@@ -76,7 +86,7 @@ export class PartyPricingComponent implements OnInit {
   }
 
 
-  updateEmployee(isValid: boolean) {
+  updatePartyPricing(isValid: boolean) {
 
     if (!isValid) {
       this.notifierService.notify("error", "Form validation failed!");
@@ -89,7 +99,7 @@ export class PartyPricingComponent implements OnInit {
           console.log(data);
           this.model = new PartyPricing();
           this.notifierService.notify("success", "Update Success");
-          this.getDepartment(this.route.snapshot.params["id"]);
+          //this.getDepartment(this.route.snapshot.params["id"]);
           this.isUpdateMode = false;
         },
         error => {
@@ -99,7 +109,7 @@ export class PartyPricingComponent implements OnInit {
       );
   };
 
-  createEmployee(isValid: boolean) {
+  createPartyPricing(isValid: boolean) {
 
     if (!isValid) {
       this.notifierService.notify("error", "Form validation failed!");
@@ -107,7 +117,7 @@ export class PartyPricingComponent implements OnInit {
     }
 
     if (this.isUpdateMode) {
-      this.updateEmployee(isValid);
+      this.updatePartyPricing(isValid);
       return;
     }
 
@@ -117,7 +127,7 @@ export class PartyPricingComponent implements OnInit {
           console.log(data);
           this.model = new PartyPricing();
           this.notifierService.notify("success", "Create Success");
-          this.getDepartment(this.route.snapshot.params["id"]);
+          //this.getDepartment(this.route.snapshot.params["id"]);
           this.isUpdateMode = false;
         },
         error => {
@@ -129,9 +139,9 @@ export class PartyPricingComponent implements OnInit {
 
 
 
-  deleteEmployee(id) {
+  deletePartyParicing(id) {
     this.partyPricingService.deleteDepartment(id).subscribe(data => {
-      this.getDepartment(this.route.snapshot.params["id"]);
+      //this.getDepartment(this.route.snapshot.params["id"]);
       this.notifierService.notify("info", "Delete Success");
     },
       error => {

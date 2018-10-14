@@ -10,7 +10,7 @@ import { Product } from "./product.model";
   selector: 'app-product',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css'],
-  providers: [NotifierService, ProductService]
+  providers: [NotifierService]
 })
 export class ProductComponent implements OnInit {
 

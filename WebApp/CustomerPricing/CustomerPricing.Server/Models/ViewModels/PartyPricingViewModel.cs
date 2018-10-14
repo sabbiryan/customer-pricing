@@ -4,7 +4,7 @@ namespace CustomerPricing.Server.Models.ViewModels
 {
     public class PartyPricingViewModel : ViewModelBase
     {
-        public PartyPricingViewModel(PartyPricing model)
+        public PartyPricingViewModel(PartyPricing model, int productCount = 1)
         {
             if(model == null) return;
             
@@ -22,6 +22,8 @@ namespace CustomerPricing.Server.Models.ViewModels
             {
                 Product = new ProductViewModel(model.Product);
             }
+
+            ProductCount = productCount;
         }
 
         public string PartyId { get; set; }        
@@ -32,6 +34,8 @@ namespace CustomerPricing.Server.Models.ViewModels
 
 
         public double ProductSalePrice { get; set; }
+
+        public int ProductCount { get; set; }
 
     }
 }

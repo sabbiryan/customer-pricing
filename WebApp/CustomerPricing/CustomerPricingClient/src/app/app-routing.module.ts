@@ -3,19 +3,16 @@ import { RouterModule, Routes} from '@angular/router';
 
 import { AppComponent } from "./app.component";
 import { SigninComponent } from "./signin/signin.component";
-import { EmployeeComponent } from "./employee/employee.component";
+import { ProductComponent } from "./product/product.component";
 import { PartyComponent } from "./party/party.component";
-import { DepartmentEmployeesComponent } from "./department-employees/department-employees.component";
+import { PartyPricingComponent } from "./party-pricing/party-pricing.component";
 
 
 const routes: Routes = ([
-  //{ path: "", component: AppComponent },
+  { path: "", component: PartyPricingComponent },
   { path: "signin", component: SigninComponent },
-
-  { path: "party", component: PartyComponent },
-  { path: "party/:id", component: DepartmentEmployeesComponent },
-
-  { path: 'product', component: EmployeeComponent },  
+  { path: "party", component: PartyComponent },  
+  { path: 'product', component: ProductComponent },  
 
   // otherwise redirect to home
   { path: '**', redirectTo: '' }

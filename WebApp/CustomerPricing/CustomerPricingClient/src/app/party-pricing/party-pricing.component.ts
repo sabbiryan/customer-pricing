@@ -3,79 +3,72 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { NotifierService } from 'angular-notifier';
 
-import { PartyService } from "../party/party.service";
+import { Product } from "../product/product.model";
 import { Party } from "../party/party.model";
+import { PartyPricing } from "./party-pricing.model";
 
-import { EmployeeService } from "../services/employee.service";
-import { Employee } from "../models/employee";
+import { PartyPricingService } from "./party-pricing.service";
 
 
 
 @Component({
-  selector: 'app-department-employees',
-  templateUrl: './department-employees.component.html',
-  styleUrls: ['./department-employees.component.css'],
-  providers: [NotifierService, EmployeeService]
+  selector: 'app-party-pricing',
+  templateUrl: './party-pricing.component.html',
+  styleUrls: ['./party-pricing.component.css'],
+  providers: [NotifierService]
 })
-export class DepartmentEmployeesComponent implements OnInit {
+export class PartyPricingComponent implements OnInit {
 
 
   department: Party;
-  model: Employee;
+  model: PartyPricing;
   isCreateMode: boolean;
   isUpdateMode: boolean;
   genders: string[];
 
-  constructor(private employeeService: EmployeeService,
-    private departmentService: PartyService,
+  constructor(private partyPricingService: PartyPricingService,
     private notifierService: NotifierService,
     private route: ActivatedRoute) {
 
     this.department = new Party();
-    this.model = new Employee();    
+    this.model = new PartyPricing();    
     this.isCreateMode = false;
     this.isUpdateMode = false;
-
-    this.genders = [
-      "Male",
-      "Female",
-      "PreferNotToSay"
-    ];
+    this.isCreateMode = false;
   }
 
   ngOnInit() {
-    this.getDepartment(this.route.snapshot.params["id"]);
+    //this.getDepartment(this.route.snapshot.params["id"]);
   }
 
   addEmployee() {
     this.cancel();
-    this.model.DepartmentId = this.department.Id;
+    //this.model.DepartmentId = this.department.Id;
     this.isCreateMode = true;
   }
 
 
-  getDepartment(id) {
+  //getDepartment(id) {
 
-    this.departmentService.getDepartment(id).subscribe(data => {
-        console.log(data);
-        this.department = data;        
-        this.notifierService.notify("info", "Data Loaded");
-        this.isUpdateMode = false;
-        this.isCreateMode = false;
-      },
-      error => {
-        this.notifierService.notify("error", "Failed To Load Data!");
-      });
-  }
+  //  this.departmentService.getDepartment(id).subscribe(data => {
+  //      console.log(data);
+  //      this.department = data;        
+  //      this.notifierService.notify("info", "Data Loaded");
+  //      this.isUpdateMode = false;
+  //      this.isCreateMode = false;
+  //    },
+  //    error => {
+  //      this.notifierService.notify("error", "Failed To Load Data!");
+  //    });
+  //}
 
 
   getEmployee(id) {
-    this.employeeService.getEmployee(id).subscribe(data => {
-        this.model = data;
-        this.model.Gender = this.model.GenderName;
-        this.notifierService.notify("info", "Data Loaded");
+    this.partyPricingService.getDepartment(id).subscribe(data => {
+        this.model = data;        
         this.isUpdateMode = true;
-        this.isCreateMode = false;
+      this.isCreateMode = false;
+        this.notifierService.notify("info", "Data Loaded");
       },
       error => {
         this.notifierService.notify("error", "Failed To Load Data!");
@@ -90,11 +83,11 @@ export class DepartmentEmployeesComponent implements OnInit {
       return;
     }
 
-    this.employeeService.updateEmployee(this.model)
+    this.partyPricingService.updateDepartment(this.model)
       .subscribe(
         data => {
           console.log(data);
-          this.model = new Employee();
+          this.model = new PartyPricing();
           this.notifierService.notify("success", "Update Success");
           this.getDepartment(this.route.snapshot.params["id"]);
           this.isUpdateMode = false;
@@ -118,11 +111,11 @@ export class DepartmentEmployeesComponent implements OnInit {
       return;
     }
 
-    this.employeeService.createEmployee(this.model)
+    this.partyPricingService.createDepartment(this.model)
       .subscribe(
         data => {
           console.log(data);
-          this.model = new Employee();
+          this.model = new PartyPricing();
           this.notifierService.notify("success", "Create Success");
           this.getDepartment(this.route.snapshot.params["id"]);
           this.isUpdateMode = false;
@@ -137,7 +130,7 @@ export class DepartmentEmployeesComponent implements OnInit {
 
 
   deleteEmployee(id) {
-    this.employeeService.deleteEmployee(id).subscribe(data => {
+    this.partyPricingService.deleteDepartment(id).subscribe(data => {
       this.getDepartment(this.route.snapshot.params["id"]);
       this.notifierService.notify("info", "Delete Success");
     },
@@ -147,7 +140,7 @@ export class DepartmentEmployeesComponent implements OnInit {
   }
 
   cancel() {
-    this.model = new Employee();
+    this.model = new PartyPricing();
     this.isUpdateMode = false;
     this.isCreateMode = false;
     this.notifierService.notify("default", "Calceled");

@@ -1,47 +1,42 @@
 import { Injectable } from "@angular/core";
-
 import { Http, Response } from "@angular/http";
-
 import { Observable, of, from } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
-import { Employee } from "../models/employee";
-
+import { Product } from "./product.model";
 import { UrlService } from "../services/url.service";
 
 @Injectable({ providedIn: "root" })
+export class ProductService {
 
-export class EmployeeService {
-
-  private employeeApi: string;
+  private productApi: string;
 
   constructor(private http: Http, private url: UrlService) {
 
-    this.employeeApi = this.url.partyApi;
+    this.productApi = this.url.productApi;
   }
 
   deleteEmployee(id: string): Observable<any> {
-    return this.http.delete(this.employeeApi + "?id=" + id)
+    return this.http.delete(this.productApi + "?id=" + id)
       .pipe(map((response: Response) => response.json()));
   }
 
   getEmployee(id: string): Observable<any> {
-    return this.http.get(this.employeeApi + "?id=" + id)
+    return this.http.get(this.productApi + "?id=" + id)
       .pipe(map((response: Response) => response.json()));
   }
 
   getAllEmployees(): Observable<any> {
-    console.log("DepartmentService.getAllDepartments invoked");
-    return this.http.get(this.employeeApi)
+    return this.http.get(this.productApi)
       .pipe(map((response: Response) => response.json()));
   }
 
-  createEmployee(department: Employee) {
-    return this.http.post(this.employeeApi, department);
+  createEmployee(department: Product) {
+    return this.http.post(this.productApi, department);
   }
 
-  updateEmployee(department: Employee) {
-    return this.http.put(this.employeeApi, department);
+  updateEmployee(department: Product) {
+    return this.http.put(this.productApi, department);
   }
 
   //private handleError<T>(operation = 'operation', result?: T) {

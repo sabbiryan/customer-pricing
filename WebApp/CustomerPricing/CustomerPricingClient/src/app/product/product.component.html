@@ -1,0 +1,79 @@
+<div class="row">
+
+
+  <div class="row">
+
+    <div *ngIf="isCreateMode || isUpdateMode">
+
+      <h3>
+        <span *ngIf="isCreateMode">Add</span>
+        <span *ngIf="isUpdateMode">Edit</span>
+        Party
+      </h3>
+      <div class="row">
+        <form #productForm="ngForm" (submit)="createProduct(productForm.valid)">
+          <div class="col-sm-3">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Product name" [(ngModel)]="model.Name" name="Name" required />
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Sale price" [(ngModel)]="model.SalePrice" name="SalePrice" required />
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Production cost" [(ngModel)]="model.ProductionCost" name="ProductionCost" />
+            </div>
+          </div>          
+          <div class="col-sm-3">
+            <div>
+              <button type="submit" class="btn btn-primary" *ngIf="isCreateMode">ADD</button>
+              <button type="submit" class="btn btn-info" *ngIf="isUpdateMode">UPDATE</button>
+              &nbsp;
+              <button type="button" class="btn btn-default" (click)="cancel()">CANCEL</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <br />
+
+    </div>
+    
+    <h3>
+      Departments
+      <button type="button" class="btn btn-default pull-right" *ngIf="!isCreateMode && !isUpdateMode" (click)="enableCreateMode()">Create</button>
+    </h3>
+    <table class="table">
+      <thead>
+      <tr>
+        <td>Action</td>
+        <td>Name</td>
+        <td>Sale Price</td>
+        <td>Production Cost</td>  
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let l of list">
+        <td>
+          <button type="button" class="btn btn-info glyphicon glyphicon-edit" title="Edit" (click)="getProduct(l.Id)"></button>
+          &nbsp;
+          &nbsp;
+          <button type="button" class="btn btn-danger glyphicon glyphicon-remove" title="Delete" (click)="deleteProduct(l.Id)"></button>
+        </td>
+        <td>{{l.Name}}</td>
+        <td>{{l.SalePrice}}</td>
+        <td>{{l.ProductionCost}}</td>
+      </tr>
+      <!--<tr [hidden]="departments == null">
+        <td colspan="5" class="text-center">Loading</td>
+      </tr>-->
+      <tr [hidden]="departments != null && departments.length > 0">
+        <td colspan="5" class="text-center">No data found</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>

@@ -10,9 +10,9 @@ import { NgBusyModule } from 'ng-busy';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { EmployeeComponent } from './employee/employee.component';
+import { ProductComponent } from './product/product.component';
 import { PartyComponent } from './party/party.component';
-import { DepartmentEmployeesComponent } from './department-employees/department-employees.component';
+import { PartyPricingComponent } from './party-pricing/party-pricing.component';
 import { SigninComponent } from './signin/signin.component';
 
 import { UrlService } from './services/url.service';
@@ -20,9 +20,9 @@ import { UrlService } from './services/url.service';
 @NgModule({
   declarations: [
     AppComponent,
-    EmployeeComponent,
+    ProductComponent,
     PartyComponent,
-    DepartmentEmployeesComponent,
+    PartyPricingComponent,
     SigninComponent    
   ],
   imports: [

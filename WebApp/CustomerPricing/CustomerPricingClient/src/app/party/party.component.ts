@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NotifierService } from "angular-notifier";
 
-import { NotifierService } from 'angular-notifier';
-
+import {ComponentBase } from "../base.component";
 import { PartyService } from "./party.service";
 import { Party } from "./party.model";
 
@@ -21,7 +21,6 @@ export class PartyComponent implements OnInit {
   isUpdateMode: boolean;
 
   constructor(private partyService: PartyService, private notifierService: NotifierService) {
-
     this.model = new Party();
     this.isUpdateMode = false;
     this.isCreateMode = false;

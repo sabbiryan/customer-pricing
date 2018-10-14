@@ -11,7 +11,7 @@ import { NgBusyModule } from 'ng-busy';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EmployeeComponent } from './employee/employee.component';
-import { DepartmentComponent } from './department/department.component';
+import { PartyComponent } from './party/party.component';
 import { DepartmentEmployeesComponent } from './department-employees/department-employees.component';
 import { SigninComponent } from './signin/signin.component';
 
@@ -21,7 +21,7 @@ import { UrlService } from './services/url.service';
   declarations: [
     AppComponent,
     EmployeeComponent,
-    DepartmentComponent,
+    PartyComponent,
     DepartmentEmployeesComponent,
     SigninComponent    
   ],

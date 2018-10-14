@@ -1,0 +1,81 @@
+<div class="row">
+
+  <div *ngIf="isCreateMode || isUpdateMode">
+
+    <h3>
+      <span *ngIf="isCreateMode">Add</span>
+      <span *ngIf="isUpdateMode">Edit</span>
+      Party
+    </h3>
+    <div class="row">
+      <form #partyForm="ngForm" (submit)="createDepartment(partyForm.valid)">
+        <div class="col-sm-3">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Company/Shop name" [(ngModel)]="model.Name" name="Name" required />
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Phone" [(ngModel)]="model.Phone" name="Phone" required />
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Address" [(ngModel)]="model.Address" name="Address" required />
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Email address" [(ngModel)]="model.Email" name="Email" required />
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="pull-right">
+            <button type="submit" class="btn btn-primary" *ngIf="isCreateMode">ADD</button>
+            <button type="submit" class="btn btn-info" *ngIf="isUpdateMode">UPDATE</button>
+            &nbsp;
+            <button type="button" class="btn btn-default" (click)="cancel()">CANCEL</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <br />
+
+  </div>
+    
+  <h3>
+    Parties
+    <button type="button" class="btn btn-default pull-right" *ngIf="!isCreateMode && !isUpdateMode" (click)="enableCreateMode()">Create</button>
+  </h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <td>Action</td>
+        <td>Name</td>
+        <td>Phone</td>
+        <td>Address</td>
+        <td>Email</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let department of departments">
+        <td>
+          <button type="button" class="btn btn-info glyphicon glyphicon-edit" title="Edit" (click)="getDepartment(department.Id)"></button>
+          &nbsp;
+          &nbsp;
+          <button type="button" class="btn btn-danger glyphicon glyphicon-remove" title="Delete" (click)="deleteDepartment(department.Id)"></button>
+        </td>
+        <td>{{department.Name}}</td>
+        <td>{{department.Phone}}</td>
+        <td>{{department.Address}}</td>
+        <td>{{department.Email}}</td>
+      </tr>
+      <!--<tr [hidden]="departments == null">
+        <td colspan="5" class="text-center">Loading</td>
+      </tr>-->
+      <tr [hidden]="departments != null && departments.length > 0">
+        <td colspan="5" class="text-center">No data found</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

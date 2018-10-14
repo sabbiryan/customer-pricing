@@ -46,6 +46,9 @@ namespace CustomerPricing.Server.Controllers
             var isExist = DbContext.Parties.AsNoTracking().Any(x => x.IsDeleted == false && x.Name.ToLower() == model.Name.ToLower() && x.Id != model.Id);
             if (isExist) return BadRequest($"{model.Name} already exist. Please try with diffrent one");
 
+            isExist = DbContext.Parties.AsNoTracking().Any(x => x.IsDeleted == false && x.Phone.ToLower() == model.Phone.ToLower() && x.Id != model.Id);
+            if (isExist) return BadRequest($"{model.Phone} already exist. Please try with diffrent one");
+
             var party = DbContext.Parties.Add(model);
             DbContext.SaveChanges();
 
@@ -60,6 +63,8 @@ namespace CustomerPricing.Server.Controllers
             var isExist = DbContext.Parties.AsNoTracking().Any(x => x.IsDeleted == false && x.Name.ToLower() == model.Name.ToLower() && x.Id != model.Id);
             if (isExist) return BadRequest($"{model.Name} already exist. Please try with diffrent one");
 
+            isExist = DbContext.Parties.AsNoTracking().Any(x => x.IsDeleted == false && x.Phone.ToLower() == model.Phone.ToLower() && x.Id != model.Id);
+            if (isExist) return BadRequest($"{model.Phone} already exist. Please try with diffrent one");
 
             DbContext.Entry(model).State = EntityState.Modified;
             DbContext.SaveChanges();

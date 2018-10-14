@@ -3,27 +3,27 @@ import { Component, OnInit } from '@angular/core';
 
 import { NotifierService } from 'angular-notifier';
 
-import { DepartmentService } from "../services/department.service";
-import { Department } from "../models/department";
+import { PartyService } from "../party/party.service";
+import { Party } from "../party/party.model";
 
 import { EmployeeService } from "../services/employee.service";
 import { Employee } from "../models/employee";
 
 @Component({
-  selector: 'app-employee',
+  selector: 'app-product',
   templateUrl: './employee.component.html',
   styleUrls: ['./employee.component.css'],
-  providers: [DepartmentService, NotifierService, EmployeeService]
+  providers: [NotifierService, EmployeeService]
 })
 export class EmployeeComponent implements OnInit {
 
   list: Employee[];
   model: Employee;
-  departments : Department[];
+  departments : Party[];
   isUpdateMode: boolean;
   genders: string[];
 
-  constructor(private employeeService: EmployeeService, private departmentService: DepartmentService, private notifierService: NotifierService) {
+  constructor(private employeeService: EmployeeService, private departmentService: PartyService, private notifierService: NotifierService) {
 
     this.model = new Employee();
     this.isUpdateMode = false;
@@ -139,12 +139,11 @@ export class EmployeeComponent implements OnInit {
   };
 
 
-
   deleteEmployee(id) {
     this.employeeService.deleteEmployee(id).subscribe(data => {
-      this.getAllEmployees();
-      this.notifierService.notify("info", "Delete Success");
-    },
+        this.getAllEmployees();
+        this.notifierService.notify("info", "Delete Success");
+      },
       error => {
         this.notifierService.notify("error", "Delete Failed!");
       });

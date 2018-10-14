@@ -3,8 +3,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { NotifierService } from 'angular-notifier';
 
-import { DepartmentService } from "../services/department.service";
-import { Department } from "../models/department";
+import { PartyService } from "../party/party.service";
+import { Party } from "../party/party.model";
 
 import { EmployeeService } from "../services/employee.service";
 import { Employee } from "../models/employee";
@@ -15,23 +15,23 @@ import { Employee } from "../models/employee";
   selector: 'app-department-employees',
   templateUrl: './department-employees.component.html',
   styleUrls: ['./department-employees.component.css'],
-  providers: [DepartmentService, NotifierService, EmployeeService]
+  providers: [NotifierService, EmployeeService]
 })
 export class DepartmentEmployeesComponent implements OnInit {
 
 
-  department: Department;
+  department: Party;
   model: Employee;
   isCreateMode: boolean;
   isUpdateMode: boolean;
   genders: string[];
 
   constructor(private employeeService: EmployeeService,
-    private departmentService: DepartmentService,
+    private departmentService: PartyService,
     private notifierService: NotifierService,
     private route: ActivatedRoute) {
 
-    this.department = new Department();
+    this.department = new Party();
     this.model = new Employee();    
     this.isCreateMode = false;
     this.isUpdateMode = false;

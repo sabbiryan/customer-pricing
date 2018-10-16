@@ -1,0 +1,29 @@
+<ion-header>
+        <ion-navbar>
+          <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+          </button>
+          <ion-title>
+            Product List
+            <span style="margin-left:30px">
+                <ion-icon name="md-add-circle" (click)="openProductCreatePage()"></ion-icon>
+            </span>
+           
+          </ion-title>
+          
+    
+        </ion-navbar>
+    
+      </ion-header>
+      
+     
+    
+      <ion-content>
+          <ion-searchbar (ionInput)="searchItems($event)"></ion-searchbar>
+        <ion-list>  
+          <button ion-item *ngFor="let item of filterItems" (click)="itemSelected($event,item)">
+            {{ item.name }}
+            <div item-end> {{item.price}} </div>
+          </button>
+        </ion-list>
+      </ion-content>

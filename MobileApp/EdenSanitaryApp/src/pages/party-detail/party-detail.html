@@ -1,0 +1,23 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title>Party detail</ion-title>
+    </ion-navbar>
+  </ion-header>
+  <ion-content>
+    <div>
+        <form>
+          <ion-list>
+            <ion-item>
+              <ion-label for="name" stacked>Name</ion-label>
+              <ion-input type="text" name="name" [(ngModel)]="item.name" [disabled]="!edit"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label for="contact" stacked>Contact</ion-label>
+              <ion-input type="text" name="contact" [(ngModel)]="item.contact" [disabled]="!edit"></ion-input>
+            </ion-item>
+   
+          </ion-list>
+         
+        </form>
+      </div>
+  </ion-content>

@@ -1,12 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 //import { HttpHeaders } from "@angular/common/http";
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NotifierModule } from 'angular-notifier';
 import { NgBusyModule } from 'ng-busy';
+
+
+import { JwtInterceptor, ErrorInterceptor } from './signin/_helpers';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -28,7 +32,11 @@ import { UrlService } from './services/url.service';
   imports: [
     BrowserModule, HttpModule, HttpClientModule, FormsModule, BrowserAnimationsModule, NotifierModule, AppRoutingModule, NgBusyModule
   ],
-  providers: [UrlService],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    UrlService
+  ],
   bootstrap: [AppComponent]
 })
 

@@ -1,0 +1,50 @@
+<!--
+  Generated template for the PartyCreatePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Party Create</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <div>
+        <form>
+          <ion-list>
+            <ion-item>
+              <ion-label floating>দোকানের নাম</ion-label>
+              <ion-input type="text" name="name" [(ngModel)]="model.name"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label floating>প্রোপাইটর</ion-label>
+              <ion-input type="text" name="proprietor" [(ngModel)]="model.proprietor"></ion-input>
+            </ion-item>
+
+
+
+            <ion-item>
+              <ion-label floating>মোবা</ion-label>
+              <ion-input type="text" name="contact" [(ngModel)]="model.contact"></ion-input>
+            </ion-item>
+
+              <ion-item>
+                <ion-label floating>বাজারের নাম</ion-label>
+                <ion-input type="text" name="bazar" [(ngModel)]="model.bazar"></ion-input>
+              </ion-item>
+
+
+          </ion-list>
+         
+          <div padding>
+              <button ion-button color="primary" block>{{!edit? "Save" : "Edit"}}</button>
+            </div>
+        </form>
+      </div>
+</ion-content>

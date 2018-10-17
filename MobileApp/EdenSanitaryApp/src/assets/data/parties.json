@@ -1,0 +1,28 @@
+{
+    "parties" : [
+    {
+        "id":1,
+      "name" : "Customer 1",
+      "contact" : "01850495477",
+      "bazar" : "Senbag Bazar",
+      "proprietor" : "Khan Traders",
+      "address" : "Senbag,Noakhali"
+    },
+    {
+        "id":2,
+        "name" : "Customer 2",
+        "contact" : "01850495466",
+        "bazar" : "Senbag Bazar",
+        "proprietor" : "Khan Traders",
+        "address" : "Senbag,Noakhali"
+    },
+    {
+        "id":3,
+      "name" : "Customer 3",
+      "contact" : "01676527872",
+      "bazar" : "Senbag Bazar",
+      "proprietor" : "Khan Traders",
+      "address" : "Senbag,Noakhali"
+    }
+    ]
+  }

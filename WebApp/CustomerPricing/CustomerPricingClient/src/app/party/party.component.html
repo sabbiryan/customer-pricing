@@ -11,9 +11,16 @@
       <form #partyForm="ngForm" (submit)="createDepartment(partyForm.valid)">
         <div class="col-sm-3">
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="Company/Shop name" [(ngModel)]="model.Name" name="Name" required />
+            <input type="text" class="form-control" placeholder="Party/Shop name" [(ngModel)]="model.Name" name="Name" required />
           </div>
         </div>
+
+        <div class="col-sm-3">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Proprietor" [(ngModel)]="model.ShopOwnerName" name="ShopOwnerName" required />
+          </div>
+        </div>
+          
         <div class="col-sm-3">
           <div class="form-group">
             <input type="text" class="form-control" placeholder="Phone" [(ngModel)]="model.Phone" name="Phone" required />
@@ -24,11 +31,7 @@
             <input type="text" class="form-control" placeholder="Address" [(ngModel)]="model.Address" name="Address" required />
           </div>
         </div>
-        <div class="col-sm-3">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Email address" [(ngModel)]="model.Email" name="Email" required />
-          </div>
-        </div>
+       
         <div class="col-sm-12">
           <div class="pull-right">
             <button type="submit" class="btn btn-primary" *ngIf="isCreateMode">ADD</button>
@@ -52,9 +55,9 @@
       <tr>
         <td>Action</td>
         <td>Name</td>
+        <td>Proprietor</td>
         <td>Phone</td>
         <td>Address</td>
-        <td>Email</td>
       </tr>
     </thead>
     <tbody>
@@ -66,9 +69,9 @@
           <button type="button" class="btn btn-danger glyphicon glyphicon-remove" title="Delete" (click)="deleteDepartment(department.Id)"></button>
         </td>
         <td>{{department.Name}}</td>
+        <td>{{department.ShopOwnerName}}</td>
         <td>{{department.Phone}}</td>
         <td>{{department.Address}}</td>
-        <td>{{department.Email}}</td>
       </tr>
       <!--<tr [hidden]="departments == null">
         <td colspan="5" class="text-center">Loading</td>

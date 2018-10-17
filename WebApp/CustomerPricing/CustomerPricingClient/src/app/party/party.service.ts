@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Http, Response } from "@angular/http";
+import { HttpClient, HttpResponse } from "@angular/common/http";
 import { Observable, of, from } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
@@ -14,7 +14,7 @@ export class PartyService {
 
   private partyApi: string;
 
-  constructor(private http: Http, private url :UrlService) {
+  constructor(private http: HttpClient, private url: UrlService) {
 
     this.partyApi = this.url.partyApi;
   }

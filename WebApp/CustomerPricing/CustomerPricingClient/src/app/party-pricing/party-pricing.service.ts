@@ -1,5 +1,5 @@
-import { Injectable } from "@angular/core";
-import { Http, Response } from "@angular/http";
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable, of, from } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
@@ -14,7 +14,7 @@ export class PartyPricingService {
 
   private partyPricingApi: string;
 
-  constructor(private http: Http, private url :UrlService) {
+  constructor(private http: HttpClient, private url: UrlService) {
 
     this.partyPricingApi = this.url.partyPricingApi;
   }
@@ -32,8 +32,8 @@ export class PartyPricingService {
   }
 
   getAllDepartments(): Observable<any> {
-    return this.http.get(this.partyPricingApi)
-      .pipe(map((response: Response) => response.json()));
+    return this.http.get(this.partyPricingApi);
+      //.pipe(map((response: Response) => response.json()));
     //.pipe(catchError(this.handleError('getAllDepartments', [])));
   }
 

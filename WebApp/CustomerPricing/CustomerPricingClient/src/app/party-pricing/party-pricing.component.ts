@@ -28,13 +28,12 @@ export class PartyPricingComponent implements OnInit {
     private notifierService: NotifierService,
     private route: ActivatedRoute) {
 
-    this.model = new PartyPricing();    
+    this.model = new PartyPricing();
     this.isCreateMode = false;
     this.isUpdateMode = false;
   }
 
   ngOnInit() {
-    //this.getDepartment(this.route.snapshot.params["id"]);
     this.getPartyPricings();
   }
 
@@ -63,10 +62,11 @@ export class PartyPricingComponent implements OnInit {
 
   getPartyPricings() {
     this.partyPricingService.getAllDepartments().subscribe(data => {
-        this.list = data;
-        this.isUpdateMode = false;
-        this.isCreateMode = false;
-      },
+      debugger;
+      this.list = data;
+      this.isUpdateMode = false;
+      this.isCreateMode = false;
+    },
       error => {
         this.notifierService.notify("error", "Failed To Load Data!");
       });
@@ -75,11 +75,11 @@ export class PartyPricingComponent implements OnInit {
 
   getPartyPricing(id) {
     this.partyPricingService.getDepartment(id).subscribe(data => {
-        this.model = data;        
-        this.isUpdateMode = true;
+      this.model = data;
+      this.isUpdateMode = true;
       this.isCreateMode = false;
-        this.notifierService.notify("info", "Data Loaded");
-      },
+      this.notifierService.notify("info", "Data Loaded");
+    },
       error => {
         this.notifierService.notify("error", "Failed To Load Data!");
       });

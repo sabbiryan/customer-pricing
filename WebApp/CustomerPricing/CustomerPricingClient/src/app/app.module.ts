@@ -1,8 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
+// import { HttpModule } from '@angular/http';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-//import { HttpHeaders } from "@angular/common/http";
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NotifierModule } from 'angular-notifier';
@@ -27,10 +26,10 @@ import { UrlService } from './services/url.service';
     ProductComponent,
     PartyComponent,
     PartyPricingComponent,
-    SigninComponent    
+    SigninComponent
   ],
   imports: [
-    BrowserModule, HttpModule, HttpClientModule, FormsModule, BrowserAnimationsModule, NotifierModule, AppRoutingModule, NgBusyModule
+    BrowserModule, HttpClientModule, FormsModule, BrowserAnimationsModule, NotifierModule, AppRoutingModule, NgBusyModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
@@ -41,5 +40,4 @@ import { UrlService } from './services/url.service';
 })
 
 export class AppModule {
-  
 }

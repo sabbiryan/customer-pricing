@@ -7,7 +7,6 @@ using CustomerPricing.Server.Models.ViewModels;
 
 namespace CustomerPricing.Server.Controllers
 {
-
     [RoutePrefix("api/Party")]
     public class PartyController : ControllerBase
     {

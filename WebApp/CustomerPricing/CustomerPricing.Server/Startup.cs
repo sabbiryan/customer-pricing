@@ -16,7 +16,7 @@ namespace CustomerPricing.Server
         {
             ConfigureAuth(app);
 
-            SecurityBuilder.Run(new ApplicationDbContext());
+            SecurityBuilder.Run(ApplicationDbContext.Create());
         }
     }
 }

@@ -7,7 +7,6 @@ using CustomerPricing.Server.Models.ViewModels;
 
 namespace CustomerPricing.Server.Controllers
 {
-
     [RoutePrefix("api/Product")]
     public class ProductController : ControllerBase
     {

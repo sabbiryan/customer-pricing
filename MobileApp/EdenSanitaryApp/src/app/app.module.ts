@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -14,6 +15,10 @@ import { PartyCreatePage } from '../pages/party-create/party-create';
 import { DataServiceProvider } from '../providers/data-service/data-service';
 import { ProductListPage } from '../pages/product-list/product-list';
 import { ProductCreatePage } from '../pages/product-create/product-create';
+import { AuthenticationService } from '../providers/authentication.service';
+import { LocalStorageService } from '../providers/localstorage.service';
+import { UrlService } from '../providers/url.service';
+import { LoginPageModule } from '../pages/login/login.module';
 
 
 @NgModule({
@@ -26,7 +31,7 @@ import { ProductCreatePage } from '../pages/product-create/product-create';
     PartyCreatePage,ProductListPage,ProductCreatePage,
   ],
   imports: [
-    BrowserModule,
+    BrowserModule, LoginPageModule, HttpClientModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
@@ -42,7 +47,7 @@ import { ProductCreatePage } from '../pages/product-create/product-create';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    DataServiceProvider
+    DataServiceProvider, AuthenticationService, LocalStorageService, UrlService
   ]
 })
 export class AppModule {}

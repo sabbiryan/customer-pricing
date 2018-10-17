@@ -7,8 +7,7 @@ using CustomerPricing.Server.Models.BusinessModels;
 using CustomerPricing.Server.Models.ViewModels;
 
 namespace CustomerPricing.Server.Controllers
-{
-
+{    
     [RoutePrefix("api/PartyPricing")]
     public class PartyPricingController : ControllerBase
     {

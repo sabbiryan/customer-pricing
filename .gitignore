@@ -6,3 +6,5 @@ WebApp/CustomerPricing/CustomerPricing.Server.Tests/obj/
 WebApp/CustomerPricing/CustomerPricing.Server.Tests/bin/
 WebApp/CustomerPricing/CustomerPricing.Server/App_Data/CustomerPricingDb.mdf
 WebApp/CustomerPricing/CustomerPricing.Server/App_Data/CustomerPricingDb_log.ldf
+WebApp/CustomerPricing/CustomerPricing.Server/obj/
+WebApp/CustomerPricing/CustomerPricing.Server/Properties/PublishProfiles/

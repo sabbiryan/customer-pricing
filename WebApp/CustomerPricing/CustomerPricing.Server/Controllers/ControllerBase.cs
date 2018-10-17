@@ -3,6 +3,7 @@ using CustomerPricing.Server.Models;
 
 namespace CustomerPricing.Server.Controllers
 {
+    [Authorize]
     public abstract class ControllerBase : ApiController
     {
         protected readonly ApplicationDbContext DbContext;

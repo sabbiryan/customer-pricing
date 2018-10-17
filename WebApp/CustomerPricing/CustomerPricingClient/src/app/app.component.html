@@ -1,7 +1,10 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="">Party Pricing</a>
+      <a class="navbar-brand" href="">
+        <!--Party Pricing-->
+        <img src="../assets/img/eden_.png" style="width: 75px;margin-top:-15px" />
+      </a>
     </div>
     <ul class="nav navbar-nav" *ngIf="isSignedIn">
       <li>
@@ -26,11 +29,11 @@
   </div>
 </nav>
 
-<div class="text-uppercase text-center" *ngIf="isSignedIn">
+<!--<div class="text-uppercase text-center" *ngIf="isSignedIn">
   <h2>
     Welcome to {{ title }}!
   </h2>  
-</div>
+</div>-->
 
 <router-outlet #routerOutlet="outlet" (activate)="changeOfRoutes()"></router-outlet>
 

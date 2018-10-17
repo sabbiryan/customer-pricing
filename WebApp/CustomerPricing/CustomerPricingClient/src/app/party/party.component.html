@@ -55,9 +55,9 @@
       <tr>
         <td>Action</td>
         <td>Name</td>
+        <td>Proprietor</td>
         <td>Phone</td>
         <td>Address</td>
-        <td>Email</td>
       </tr>
     </thead>
     <tbody>
@@ -69,9 +69,9 @@
           <button type="button" class="btn btn-danger glyphicon glyphicon-remove" title="Delete" (click)="deleteDepartment(department.Id)"></button>
         </td>
         <td>{{department.Name}}</td>
+        <td>{{department.ShopOwnerName}}</td>
         <td>{{department.Phone}}</td>
         <td>{{department.Address}}</td>
-        <td>{{department.Email}}</td>
       </tr>
       <!--<tr [hidden]="departments == null">
         <td colspan="5" class="text-center">Loading</td>
